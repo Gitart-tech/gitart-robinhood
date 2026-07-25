@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020203;
+  --color-foreground: #eeeeee;
+  --color-card: #050607;
+  --color-card-foreground: #eeeeee;
+  --color-popover: #050607;
+  --color-popover-foreground: #eeeeee;
+  --color-primary: #57cb60;
+  --color-primary-foreground: #030303;
+  --color-secondary: #101116;
+  --color-secondary-foreground: #dedede;
+  --color-muted: #14161b;
+  --color-muted-foreground: #808080;
+  --color-accent: #008287;
+  --color-accent-foreground: #f8f8f8;
+  --color-destructive: #82181a;
+  --color-border: #1e212b;
+  --color-input: #090b0f;
+  --color-ring: #57cb60;
+  --color-terminal-green: #57cb60;
+  --color-terminal-blue: #008287;
+  --color-terminal-yellow: #f4c947;
+  --color-terminal-red: #f0503d;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.terminal-text {
+  text-shadow: 0 0 5px var(--color-terminal-green);
+}
+
+.terminal-glow {
+  box-shadow:
+    0 0 20px rgba(34, 197, 94, 0.15),
+    0 0 40px rgba(34, 197, 94, 0.1),
+    inset 0 0 60px rgba(34, 197, 94, 0.05);
+}
+
+.scanline {
+  position: relative;
+}
+
+.scanline::before {
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(34, 197, 94, 0.15), transparent);
+  height: 2px;
+  animation: scanline 6s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  color: var(--color-primary);
+  animation: cursor-blink 0.7s step-end infinite;
+}
+
+.typing-cursor::after {
+  content: "▋";
+  color: var(--color-primary);
+  animation: cursor-blink 0.7s step-end infinite;
+  margin-left: 1px;
+}
+
+/* Hero CA badge: light sweep left → right */
+.terminal-badge-shine {
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(87, 203, 96, 0.22) 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  animation: badge-shine-ltr 2.4s linear infinite;
+}
+
+@keyframes badge-shine-ltr {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* Contract card: slower ambient LTR sweep */
+.contract-card-shine {
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    transparent 42%,
+    rgba(87, 203, 96, 0.07) 50%,
+    transparent 58%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: badge-shine-ltr 4s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in-up 0.35s ease-out both;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
