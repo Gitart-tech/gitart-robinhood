@@ -36,7 +36,7 @@ export function ContractSection() {
   const ref = useRef<HTMLElement>(null)
 
   const ca = SITE.contractAddress
-  const canCopy = SITE.contractLive && ca !== 'Coming Soon'
+  const canCopy = Boolean(SITE.contractLive && ca && !ca.toLowerCase().includes('coming soon'))
   const footerMsg = canCopy
     ? 'Always verify the contract address before interacting.'
     : 'Contract address will be published here after launch.'
