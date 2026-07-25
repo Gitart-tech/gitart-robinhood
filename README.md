@@ -12,7 +12,33 @@ Build websites like you run commands — create, customize, and deploy through a
   <a href="https://gitart.xyz"><strong>Live site → gitart.xyz</strong></a>
   &nbsp;·&nbsp;
   <a href="https://github.com/Gitart-tech/gitart-robinhood">GitHub</a>
+  &nbsp;·&nbsp;
+  <a href="https://x.com/gitartech">X</a>
 </p>
+
+---
+
+## Screenshots
+
+### Hero — build like you run commands
+
+![Gitart hero with typewriter headline and terminal demo](assets/screenshots/01-hero.png)
+
+### Terminal demo — CLI workflow
+
+![Interactive terminal simulation: gitart init, create, deploy](assets/screenshots/02-terminal-demo.png)
+
+### Features — why Gitart
+
+![Feature cards: AI generation, RobinHood chain, terminal UI, themes, deploy, NFT mint](assets/screenshots/03-features.png)
+
+### Core commands
+
+![List of gitart CLI commands for create, edit, deploy, wallet, mint](assets/screenshots/04-commands.png)
+
+### CA — contract address
+
+![Contract address terminal card on RobinHood chain](assets/screenshots/05-contract.png)
 
 ---
 
@@ -60,9 +86,10 @@ gitart create logo "dog"
 
 ```text
 ├── api/                 # Serverless: POST /api/generate-logo
-├── assets/              # Brand images (avatar, OG)
+├── assets/              # Brand images + screenshots
+│   └── screenshots/     # Live site captures for README
 ├── docs/                # Optional AI image API setup
-├── public/              # Favicon & static files
+├── public/              # Favicon, OG image, avatar
 ├── server/              # Image providers (stock + optional AI)
 ├── src/
 │   ├── components/      # UI sections + terminal
@@ -84,7 +111,7 @@ export const SITE = {
   contractAddress: 'Coming Soon',
   contractLive: false,
   social: {
-    x: 'https://x.com/...',
+    x: 'https://x.com/gitartech',
     github: 'https://github.com/Gitart-tech/gitart-robinhood',
   },
 }
@@ -110,7 +137,7 @@ npm i -g vercel
 vercel --prod
 ```
 
-Or connect this repo in the Vercel dashboard and set domain **gitart.xyz**.
+Domain: **[gitart.xyz](https://gitart.xyz)**
 
 ### Env (optional)
 
@@ -138,5 +165,5 @@ MIT — see project owner terms for brand assets.
 
 <p align="center">
   <code>Build websites like you run commands.</code><br/>
-  <sub>Built on RobinHood · Powered by AI</sub>
+  <sub>Built on RobinHood · Powered by AI · gitart.xyz</sub>
 </p>
