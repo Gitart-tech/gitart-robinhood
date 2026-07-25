@@ -8,7 +8,7 @@ export const SITE = {
   /** Set true when CA is a real on-chain address */
   contractLive: false,
   social: {
-    x: 'https://x.com/Gitart_tech',
+    x: 'https://x.com/gitartech',
     github: 'https://github.com/Gitart-tech/gitart-robinhood',
   },
   repo: 'https://github.com/Gitart-tech/gitart-robinhood',
