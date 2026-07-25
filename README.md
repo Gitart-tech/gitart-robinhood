@@ -1,68 +1,142 @@
-# Gitart on RobinHood — Clone
+# Gitart
 
-Full clone of [gitart-base.vercel.app](https://gitart-base.vercel.app/) with **Base → RobinHood** rebranding.
+**Terminal-style AI website builder on RobinHood.**
 
-## What's included
+Build websites like you run commands — create, customize, and deploy through a pure terminal workflow.
 
-Landing page sections (same structure as the original):
+<p align="center">
+  <img src="assets/gitart-x-avatar-400.png" width="120" alt="Gitart logo" />
+</p>
 
-- **Navbar** — logo badge “on RobinHood”, Demo / Features / Commands, Get Started
-- **Hero** — typing headline, CTAs, install snippet
-- **Terminal demo** — auto-playing CLI simulation (`gitart init`, create, deploy on RobinHood)
-- **Interactive terminal modal** — `gitart create "idea"`, `gitart create logo "idea"`, project generation animation
-- **How It Works** — Create / Customize / Deploy
-- **Why Gitart** — 6 feature cards
-- **Core Commands** — full command list including `gitart connect-robinhood`
-- **CTA + Footer**
+<p align="center">
+  <a href="https://gitart.xyz"><strong>Live site → gitart.xyz</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/Gitart-tech/gitart-robinhood">GitHub</a>
+</p>
 
-## Base → RobinHood changes
+---
 
-| Original | Clone |
-|----------|--------|
-| on Base | on RobinHood |
-| Built on Base | Built on RobinHood |
-| Base wallet / mainnet | RobinHood wallet / mainnet |
-| `gitart connect-base` | `gitart connect-robinhood` |
-| `deploy --network base` | `deploy --network robinhood` |
-| Based Pepe / BasedMeme | RobinHood Pepe / RobinHoodMeme |
-| CHAIN: Base | CHAIN: RobinHood |
-| Mint on Base | Mint on RobinHood |
+## Features
 
-## Run
+| Feature | Description |
+|--------|-------------|
+| **AI generation** | Describe an idea — get Hero, Tokenomics, Roadmap, and more |
+| **Terminal UI** | Full CLI-style interface (no drag-and-drop) |
+| **RobinHood chain** | Wallet connect + mint project as NFT |
+| **Theme commands** | `gitart theme "cyberpunk"` and more |
+| **Instant deploy** | One command to a live URL |
+| **Stock logos** | On-demand web photos by keyword (`create logo "dog"`) |
+
+## Quick start
 
 ```bash
 npm install
-copy .env.example .env
-# Paste at least one free API key (see below)
 npm run dev
 ```
 
-Open http://localhost:5173
+Open [http://localhost:5173](http://localhost:5173)
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Ảnh logo / preview (stock on-demand)
-
-**Không cần tải sẵn, không cần API key AI.**
-
-Khi chạy lệnh, server lấy **ảnh thật trên mạng** theo từ khóa:
+## Core commands
 
 ```text
-gitart create logo "dog"      →  ảnh chó (dog.ceo)
-gitart create logo "cat"      →  ảnh mèo
-gitart create logo "mountain" →  LoremFlickr / Wikimedia
+gitart create "your website idea"
+gitart preview
+gitart edit [section] "instruction"
+gitart add section "name"
+gitart remove [section]
+gitart theme "style"
+gitart deploy
+gitart connect-robinhood
+gitart mint
+gitart create logo "dog"
 ```
 
-Ảnh chỉ tải **lúc có lệnh** → trả về browser (base64). Không lưu kho ảnh trong project.
+## Project structure
 
-Tuỳ chọn bật AI sau: `USE_AI_IMAGE=1` + key trong `.env` (xem `docs/IMAGE_API_SETUP.md`).
+```text
+├── api/                 # Serverless: POST /api/generate-logo
+├── assets/              # Brand images (avatar, OG)
+├── docs/                # Optional AI image API setup
+├── public/              # Favicon & static files
+├── server/              # Image providers (stock + optional AI)
+├── src/
+│   ├── components/      # UI sections + terminal
+│   ├── config/site.ts   # CA, social links, domain
+│   └── lib/             # Helpers
+├── vercel.json
+└── vite.config.ts
+```
+
+## Configuration
+
+Edit `src/config/site.ts`:
+
+```ts
+export const SITE = {
+  name: 'Gitart',
+  chain: 'RobinHood',
+  domain: 'https://gitart.xyz',
+  contractAddress: 'Coming Soon',
+  contractLive: false,
+  social: {
+    x: 'https://x.com/...',
+    github: 'https://github.com/Gitart-tech/gitart-robinhood',
+  },
+}
+```
+
+## Logo / image command
+
+By default, images are **real web photos fetched on demand** (no AI key required):
+
+```text
+gitart create logo "dog"
+gitart create logo "cat"
+```
+
+Optional AI providers (Gemini / Hugging Face / xAI): see [docs/IMAGE_API_SETUP.md](docs/IMAGE_API_SETUP.md).
+
+## Deploy
+
+### Vercel
+
+```bash
+npm i -g vercel
+vercel --prod
+```
+
+Or connect this repo in the Vercel dashboard and set domain **gitart.xyz**.
+
+### Env (optional)
+
+```env
+# USE_AI_IMAGE=1
+# GEMINI_API_KEY=
+# HF_TOKEN=
+# XAI_API_KEY=
+```
+
+`.env` is gitignored — never commit secrets.
 
 ## Stack
 
-- Vite + React + TypeScript
-- Tailwind CSS v4
-- JetBrains Mono
-- On-demand web stock photos (dog.ceo, LoremFlickr, …)
+- **Vite** + **React** + **TypeScript**
+- **Tailwind CSS** v4
+- **JetBrains Mono**
+- Deploy: **Vercel**
+
+## License
+
+MIT — see project owner terms for brand assets.
+
+---
+
+<p align="center">
+  <code>Build websites like you run commands.</code><br/>
+  <sub>Built on RobinHood · Powered by AI</sub>
+</p>

@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+dog2.jpg
+dog3.jpg
+gitart-xyz.html
+body.json
+gen.json
 
 # Env — never commit secrets
 .env

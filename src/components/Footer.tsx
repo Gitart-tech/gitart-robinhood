@@ -23,7 +23,7 @@ export function Footer() {
               Docs
             </a>
             <a
-              href={SITE.social.github}
+              href={SITE.social.github || SITE.repo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
@@ -39,6 +39,14 @@ export function Footer() {
             >
               <IconX className="w-3.5 h-3.5" />
               X
+            </a>
+            <a
+              href={SITE.domain}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              gitart.xyz
             </a>
           </div>
         </div>
